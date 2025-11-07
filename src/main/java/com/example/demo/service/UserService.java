@@ -28,4 +28,24 @@ public class UserService {
         userRepo.save(modelMapper.map(userDTO, User.class));
         return userDTO;
     }
+
+    public UserDTO updateUser(UserDTO userDTO){
+        userRepo.save(modelMapper.map(userDTO, User.class));
+        return userDTO;
+    }
+
+    public String deleteUser(UserDTO userDTO){
+        userRepo.delete(modelMapper.map(userDTO,User.class));
+        return "User deleted..!";
+    }
+
+    public String deleteUserById(Integer id) {
+        if (userRepo.existsById(id)) {
+            userRepo.deleteById(id);
+            return "User deleted successfully!";
+        } else {
+            return "User not found!";
+        }
+    }
+
 }
